@@ -1,0 +1,69 @@
+<mvc:View controllerName="SA.SmartAssignment.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+                      <Table id="idTable" items="{/ManagementOpeartionSet}">
+                  <columns>
+                  <Column demandPopin="true" minScreenWidth="Tablet">
+                      <Text text="EmpId"></Text>
+                  </Column>
+                    <Column>
+                      <Text text="EmpName"></Text>
+                  </Column>
+                    <Column>
+                      <Text text="EmpDept"></Text>
+                  </Column>
+                    <Column demandPopin="true" minScreenWidth="Small">
+                      <Text text="EmpPhone"></Text>
+                  </Column>
+                    <Column demandPopin="true" minScreenWidth="Small">
+                      <Text text="EmpAddress"></Text>
+                  </Column>
+                    <Column demandPopin="true" minScreenWidth="Small">
+                      <Text text="EmpSalary"></Text>
+                  </Column>
+                   <Column demandPopin="false" minScreenWidth="Small">      
+                      <Text text="Add Resources"></Text>
+                  </Column>
+                  
+                  </columns>
+                <items>
+                <ColumnListItem type="Active">
+                <cells>
+                  <ObjectStatus text="{EmpId}"></ObjectStatus>
+                  <Input value="{EmpName}"></Input>
+                   <Text text="{EmpDept}"></Text>
+                    <Text text="{EmpPhone}"></Text>
+                     <Text text="{EmpAddress}"></Text>
+                       <Text text="{
+						path: 'EmpSalary',
+						type: 'sap.ui.model.odata.type.String',
+                       constraints : {isDigitSequence : true}
+					}" ></Text>
+                       <Button  text="Add Resources" press="onAddResources"></Button>
+                </cells>
+                </ColumnListItem>
+                
+                </items>
+                </Table>
+
+            
+                    </content>
+                    <footer>
+			<OverflowToolbar id="idtoolbar">
+				<Button id="messagePopoverBtn"	
+					
+					text= "Error Dialog"
+					press=".handleMessagePopoverPress"/>
+				<ToolbarSpacer/>
+				<Button type="Emphasized" text="Save" press="_generateInvalidUserInput" />
+				<Button text="Cancel" />
+			</OverflowToolbar>
+		</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
